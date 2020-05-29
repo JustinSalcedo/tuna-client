@@ -1,0 +1,67 @@
+{
+    "templates":[
+        { "id":1, "name":"Basic nursery", "description":"I need to stick that poster", "children":["1", "2", "3"], "category":"Landing", "structure":"EPC", "color":"9", "font":"8" },
+        { "id":2, "name":"E-commerce", "description":"Lorem ipsum dolor sit amet,", "children":["2", "3", "4"], "category":"About", "structure":"EPC", "color":"8", "font":"2" },
+        { "id":3, "name":"Startup", "description":"Maecenas rutrum augue mauri", "children":["5", "3", "4"], "category":"About", "structure":"Slideshow", "color":"7", "font":"4" },
+        { "id":4, "name":"MainGallery", "description":"Vestibulum a sapien odio.", "children":["3", "4"], "category":"Home", "structure":"Cover", "color":"8", "font":"6" },
+        { "id":5, "name":"Brochure", "description":"Quisque eleifend vestibulum", "children":[["5", "1", "2"]], "category":"Products", "structure":"Gallery", "color":"5", "font":"1" }
+    ],
+    "models":[
+        { "id": 1, "model": "EssentialLocal", "children": ["header", "article", "footer"], "category": "Landing", "structure": "EPC"},
+        { "id": 2, "model": "Informational", "children": ["article", "footer", "productDive"], "category": "About", "structure": "EPC"},
+        { "id": 3, "model": "Presentation", "children": ["socialProof", "footer", "productDive"], "category": "About", "structure": "Slideshow"},
+        { "id": 4, "model": "NewProduct", "children": ["footer", "productDive"], "category": "Home", "structure": "Cover"},
+        { "id": 5, "model": "Catalogue", "children": ["socialProof", "header", "article"], "category": "Products", "structure": "Gallery"}
+    ],
+    "sections":[
+        { "id": 1, "category": "header", "tag": "header", "children": ["1", "2", "3"], "layout": "1", "description": "My towel is blue"},
+        { "id": 2, "category": "article", "tag": "section", "children": ["5", "3", "4"], "layout": "2", "description": "My glass is also blue"},
+        { "id": 3, "category": "footer", "tag": "footer", "children": ["9", "7", "8"], "layout": "3", "description": "But my other glass is red"},
+        { "id": 4, "category": "productDive", "tag": "section", "children": ["3", "7", "6"], "layout": "4", "description": "It's hard to treat my deficit"},
+        { "id": 5, "category": "socialProof", "tag": "section", "children": ["6", "5", "4"], "layout": "5", "description": "I need help"}
+    ],
+    "components":[
+        { "id": 1, "type": "navbar", "tag": "nav", "children": ["2", "3", "4"], "description": "My towel is blue"},
+        { "id": 2, "type": "current_hours", "tag": "div", "nodes": ["p", "span"], "description": "Useful with Vanilla Javascript"},
+        { "id": 3, "type": "secondary_button", "tag": "button", "placeholder": "secondary_button", "description": "I would like to buy cookies"},
+        { "id": 4, "type": "primary_buttons", "tag": "button", "placeholder": "primary_button", "description": "But I can't it so much flour"},
+        { "id": 5, "type": "header_content", "tag": "div", "children": ["6", "7", "8"], "description": "That's one of my fitness secrets"},
+        { "id": 6, "type": "header_text", "tag": "div", "nodes": ["h1", "h2", "p"], "description": "We stack threee types of text"},
+        { "id": 7, "type": "header_image", "tag": "div", "nodes": ["img"], "description": "I know, you want to go out..."},
+        { "id": 8, "type": "operational_hours", "tag": "div", "nodes": ["h2", "p", "span"], "description": "Mamaaaaaaa"},
+        { "id": 9, "type": "useful_links", "tag": "ul", "nodes": ["li", "li", "li", "li"], "description": "This has to work"}
+    ],
+    "layouts":[
+        { "id": 1, "file": "I need to stick that poster", "name": "EssentialHeader", "tags": ["matching", "wet", "emerald"], "sections": ["1", "10"] },
+        { "id": 2, "file": "Lorem ipsum dolor sit amet,", "name": "CentralArticle", "tags": ["beige", "brown", "coffee"], "sections": ["2", "11"] },
+        { "id": 3, "file": "Maecenas rutrum augue mauri", "name": "EssentialFooter", "tags": ["minimal", "cold", "fall"], "sections": ["3", "12"] },
+        { "id": 4, "file": "Vestibulum a sapien odio.", "name": "Infographic4", "tags": ["brown", "contrast", "ginger"], "sections": ["4", "13"] },
+        { "id": 5, "file": "Quisque eleifend vestibulum", "name": "Article&Text", "tags": ["matching", "gold", "dark"], "sections": ["5", "14"] },
+        { "id": 6, "file": "Nullam sagittis orci at neq", "name": "Listing", "tags": ["cyan", "cold", "greenery"], "sections": ["6", "15"] },
+        { "id": 7, "file": "Duis felis mi, venenatis ut", "name": "GridGallery", "tags": ["minimal", "brown", "matching", "coffe"], "sections": ["7", "16"] },
+        { "id": 8, "file": "Donec eros leo, tincidunt u", "name": "Pyramid", "tags": ["clay", "beige", "orange", "home"], "sections": ["8", "17"] },
+        { "id": 9, "file": "Integer volutpat dolor eget", "name": "Colums2", "tags": ["bright", "yellow", "pink"], "sections": ["9", "18"] }
+    ],
+    "colors":[
+        { "id": 1, "file": "I need to stick that poster", "name": "Bottle glass", "tags": ["matching", "wet", "emerald"], "samples": ["#7cbdc9", "#d0d0b8", "#afbaa3"] },
+        { "id": 2, "file": "Lorem ipsum dolor sit amet,", "name": "Greece", "tags": ["beige", "brown", "coffee"], "samples": ["#dae8ec", "#dac5bc", "#b48464"] },
+        { "id": 3, "file": "Maecenas rutrum augue mauri", "name": "Austere", "tags": ["minimal", "cold", "fall"], "samples": ["#4d3d5d", "#f00000", "#1a3b5c"] },
+        { "id": 4, "file": "Vestibulum a sapien odio.", "name": "Boats", "tags": ["brown", "contrast", "ginger"], "samples": ["#3d677b", "#a6a7a3", "#d3c7b1"] },
+        { "id": 5, "file": "Quisque eleifend vestibulum", "name": "Renovation", "tags": ["matching", "gold", "dark"], "samples": ["#b67929", "#a3acb1", "#3c5b74"] },
+        { "id": 6, "file": "Nullam sagittis orci at neq", "name": "Dull", "tags": ["cyan", "cold", "greenery"], "samples": ["#487549", "#abba82", "#a7b5b7", "#037c87", "#102020"] },
+        { "id": 7, "file": "Duis felis mi, venenatis ut", "name": "Ceramic", "tags": ["minimal", "brown", "matching", "coffe"], "samples": ["#1d0f0b", "#796d5d", "#baae97", "#a6a7a5"] },
+        { "id": 8, "file": "Donec eros leo, tincidunt u", "name": "Baked", "tags": ["clay", "beige", "orange", "home"], "samples": ["#eb8b35", "#a43604"] },
+        { "id": 9, "file": "Integer volutpat dolor eget", "name": "Banana", "tags": ["bright", "yellow", "pink"], "samples": ["#e55b7e", "#f6f5f0", "#f6da73", "#948f47", "#3e5336"] }
+    ],
+    "fonts":[
+        { "id": 1, "file": "I need to stick that poster", "name": "Formal", "tags": ["slab", "serif", "monotype"], "faces": ["calvert", "acumin"] },
+        { "id": 2, "file": "Lorem ipsum dolor sit amet,", "name": "Writer", "tags": ["typewrite", "serif", "light"], "faces": ["montserrat", "courier"] },
+        { "id": 3, "file": "Maecenas rutrum augue mauri", "name": "Newspaper", "tags": ["modern", "serif", "robust"], "faces": ["skolar latin", "proxima nova"] },
+        { "id": 4, "file": "Vestibulum a sapien odio.", "name": "TextBlock", "tags": ["sans", "small", "caps", "robust"], "faces": ["alegreya sans", "source sans"] },
+        { "id": 5, "file": "Quisque eleifend vestibulum", "name": "Tropical", "tags": ["brush", "sans", "display", "light", "hand"], "faces": ["pacifico", "quicksand"] },
+        { "id": 6, "file": "Nullam sagittis orci at neq", "name": "Geometric", "tags": ["display", "caps", "sans", "stroke"], "faces": ["julius sans", "archivo narrow"] },
+        { "id": 7, "file": "Duis felis mi, venenatis ut", "name": "Magazine", "tags": ["display", "serif", "elegant","print"], "faces": ["playfair display", "raleway"] },
+        { "id": 8, "file": "Donec eros leo, tincidunt u", "name": "Alternate", "tags": ["stroke", "sans", "versatile"], "faces": ["oswald", "lato"] },
+        { "id": 1, "file": "Integer volutpat dolor eget", "name": "LittleFancy", "tags": ["headline", "serif", "sans", "modern"], "faces": ["minion", "super grotesk"] }
+    ]
+}

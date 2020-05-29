@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Lora:ital,wght@0,700;1,400&display=swap');
+@import './variables';
+@import './fonts';
+@import './components/main_navbar';
+@import './components/input_groups';
+@import './components/buttons';
+@import './components/main_dashboard';
+@import './components/elements_list';
+@import './components/modals';
+
+body {
+    padding: $pad4 0;
+}

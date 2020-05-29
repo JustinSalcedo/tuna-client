@@ -1,0 +1,87 @@
+@import '../variables';
+
+.main_dashboard {
+    border: 1px solid;
+    border-radius: $pad1;
+    h1 {
+        margin-bottom: $pad5;
+    }
+    .main_panel {
+        padding: $pad4;
+        .browse_feed {
+            margin-bottom: $pad4;
+            form {
+                display: flex;
+                align-items: flex-end;
+                .input_group {
+                    margin-right: $pad3;
+                    .input_text, .input_file, .input_file::before {
+                        width: $size5;
+                    }
+                    .input-short {
+                        width: $size4;
+                    }
+                }
+            }
+            #formStyles {
+                .input_text {
+                    width: $size4;
+                }
+            }
+        }
+        .browse_table {
+            .table {
+                th, td {
+                    padding: $pad1;
+                }
+                margin-bottom: 0;
+            }
+            max-height: $size6;
+            overflow: auto;
+            margin-bottom: $pad4;
+        }
+        .center_button {
+            display: flex;
+            justify-content: center;
+        }
+        .new_button {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: $pad4;
+        }
+        .radio_group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: $pad4;
+            .input_radio {
+                margin-right: $pad2;
+            }
+            label {
+                margin-right: $pad3;
+            }
+        }
+    }
+    .side_panel {
+        padding: $pad4;
+        border-left: 1px solid;
+        .details_form {
+            display: block;
+            .input_group, .auto_input_group {
+                margin-bottom: $pad3;
+            }
+            .input_text, .input_textarea {
+                width: $size5;
+            }
+            margin-bottom: $pad6;
+        }
+    }
+    .submit_buttons {
+        display: block;
+        text-align: center;
+        .row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: $pad3;
+        }
+    }
+}

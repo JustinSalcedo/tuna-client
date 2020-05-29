@@ -1,0 +1,13 @@
+@import '../variables';
+
+.elements_list {
+    display: flex;
+    align-items: center;
+    .auto_input_group {
+        margin-right: $pad5;
+    }
+    .input_checkbox, .list_up, .list_down {
+        margin-right: $pad2;
+    }
+    margin-bottom: $pad3;
+}

@@ -1,0 +1,402 @@
+@import url("https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Lora:ital,wght@0,700;1,400&display=swap");
+body {
+  font-size: 14px;
+  font-family: 'Lora', serif;
+}
+
+li {
+  font-size: 18px;
+  font-family: 'Coustard', serif;
+}
+
+h1 {
+  font-size: 24px;
+  font-family: 'Coustard', serif;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 18px;
+  font-family: 'Coustard', serif;
+  font-weight: normal;
+}
+
+label {
+  font-size: 12px;
+  font-family: 'Lora', serif;
+}
+
+button {
+  font-size: 18px;
+  font-family: 'Lora', serif;
+}
+
+.mini-button {
+  font-size: 12px;
+}
+
+th, input, textarea {
+  font-size: 14px;
+  font-family: 'Coustard', serif;
+}
+
+td {
+  font-size: 14px;
+  font-family: 'Lora', serif;
+}
+
+.response_output {
+  font-weight: bold;
+}
+
+.monospace {
+  font-weight: normal;
+  font-family: 'Lucida Console', monospace;
+}
+
+.main_navbar {
+  margin-bottom: 40px;
+}
+
+.main_navbar .center_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 40px;
+}
+
+.main_navbar .center_logo img {
+  width: 160px;
+}
+
+.main_navbar .nav_links ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  padding: 0;
+  margin: auto;
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.main_navbar .nav_links ul li {
+  padding: 16px 0;
+}
+
+.main_navbar .nav_links ul li.active {
+  border-bottom: 2px solid;
+}
+
+.main_navbar .sub-nav ul {
+  width: 60%;
+}
+
+.input_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.input_group .input_text, .input_group .input_select {
+  border: 1px solid;
+  border-radius: 8px;
+  height: 40px;
+  padding: 0 8px;
+}
+
+.input_group .input_textarea {
+  border: 1px solid;
+  border-radius: 8px;
+  height: 160px;
+  padding: 8px;
+}
+
+.auto_input_group {
+  display: inline;
+}
+
+.auto_input_group .auto_input_text {
+  border: none;
+  margin-left: 16px;
+}
+
+.auto_input_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.auto_input_list .auto_input_text {
+  border: none;
+  margin-left: 16px;
+}
+
+.input_checkbox, .input_radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+}
+
+.input_file {
+  color: transparent;
+  height: 40px;
+}
+
+.input_file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.input_file::before {
+  content: '';
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 8px;
+  height: 40px;
+  padding: 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  color: black;
+}
+
+.primary_button {
+  padding: 0 16px;
+  border: 2px solid;
+  border-radius: 8px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.secondary_button {
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mini-button {
+  height: 20px;
+}
+
+.main_dashboard {
+  border: 1px solid;
+  border-radius: 8px;
+}
+
+.main_dashboard h1 {
+  margin-bottom: 64px;
+}
+
+.main_dashboard .main_panel {
+  padding: 40px;
+}
+
+.main_dashboard .main_panel .browse_feed {
+  margin-bottom: 40px;
+}
+
+.main_dashboard .main_panel .browse_feed form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.main_dashboard .main_panel .browse_feed form .input_group {
+  margin-right: 24px;
+}
+
+.main_dashboard .main_panel .browse_feed form .input_group .input_text, .main_dashboard .main_panel .browse_feed form .input_group .input_file, .main_dashboard .main_panel .browse_feed form .input_group .input_file::before {
+  width: 200px;
+}
+
+.main_dashboard .main_panel .browse_feed form .input_group .input-short {
+  width: 160px;
+}
+
+.main_dashboard .main_panel .browse_feed #formStyles .input_text {
+  width: 160px;
+}
+
+.main_dashboard .main_panel .browse_table {
+  max-height: 320px;
+  overflow: auto;
+  margin-bottom: 40px;
+}
+
+.main_dashboard .main_panel .browse_table .table {
+  margin-bottom: 0;
+}
+
+.main_dashboard .main_panel .browse_table .table th, .main_dashboard .main_panel .browse_table .table td {
+  padding: 8px;
+}
+
+.main_dashboard .main_panel .center_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main_dashboard .main_panel .new_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.main_dashboard .main_panel .radio_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.main_dashboard .main_panel .radio_group .input_radio {
+  margin-right: 16px;
+}
+
+.main_dashboard .main_panel .radio_group label {
+  margin-right: 24px;
+}
+
+.main_dashboard .side_panel {
+  padding: 40px;
+  border-left: 1px solid;
+}
+
+.main_dashboard .side_panel .details_form {
+  display: block;
+  margin-bottom: 80px;
+}
+
+.main_dashboard .side_panel .details_form .input_group, .main_dashboard .side_panel .details_form .auto_input_group {
+  margin-bottom: 24px;
+}
+
+.main_dashboard .side_panel .details_form .input_text, .main_dashboard .side_panel .details_form .input_textarea {
+  width: 200px;
+}
+
+.main_dashboard .submit_buttons {
+  display: block;
+  text-align: center;
+}
+
+.main_dashboard .submit_buttons .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 24px;
+}
+
+.elements_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 24px;
+}
+
+.elements_list .auto_input_group {
+  margin-right: 64px;
+}
+
+.elements_list .input_checkbox, .elements_list .list_up, .elements_list .list_down {
+  margin-right: 16px;
+}
+
+.mymodal_screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.mymodal_screen .mymodal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1140px;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 16px;
+  background: white;
+}
+
+.mymodal_screen .mymodal-dialog .mymodal-header {
+  text-align: right;
+  height: 40px;
+}
+
+.mymodal_screen .mymodal-dialog .mymodal-body {
+  text-align: center;
+}
+
+.mymodal_screen .mymodal-dialog .mymodal-body .center_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 40px;
+}
+
+.mymodal_screen .mymodal-dialog .mymodal-body .center_logo img {
+  width: 80px;
+}
+
+.mymodal_screen .mymodal-dialog .mymodal-body h2 {
+  margin-bottom: 40px;
+}
+
+.mymodal_screen .mymodal-dialog .mymodal-body .container-fluid {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+body {
+  padding: 40px 0;
+}
+/*# sourceMappingURL=style.css.map */

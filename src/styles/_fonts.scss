@@ -1,0 +1,56 @@
+@import './variables';
+
+body {
+    font-size: $font6;
+    font-family: 'Lora', serif;
+}
+
+li {
+    font-size: $font7;
+    font-family: 'Coustard', serif;
+}
+
+h1 {
+    font-size: $font8;
+    font-family: 'Coustard', serif;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: $font7;
+    font-family: 'Coustard', serif;
+    font-weight: normal;
+}
+
+label {
+    font-size: $font5;
+    font-family: 'Lora', serif;
+}
+
+button {
+    font-size: $font7;
+    font-family: 'Lora', serif;
+}
+
+.mini-button {
+    font-size: $font5;
+}
+
+th, input, textarea {
+    font-size: $font6;
+    font-family: 'Coustard', serif;
+}
+
+td {
+    font-size: $font6;
+    font-family: 'Lora', serif;
+}
+
+.response_output {
+    font-weight: bold;
+}
+
+.monospace {
+    font-weight: normal;
+    font-family: 'Lucida Console', monospace;
+}

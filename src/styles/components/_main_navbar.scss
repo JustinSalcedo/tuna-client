@@ -1,0 +1,35 @@
+@import '../variables';
+
+.main_navbar {
+    margin-bottom: $pad4;
+    .center_logo {
+        display: flex;
+        justify-content: center;
+        img {
+            width: $size4;
+        }
+        margin-bottom: $pad4;
+    }
+    .nav_links {
+        ul {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            padding: 0;
+            margin: auto;
+            list-style: none;
+            margin-bottom: $pad4;
+            li {
+                padding: $pad2 0;
+            }
+            li.active {
+                border-bottom: 2px solid;
+            }
+        }
+    }
+    .sub-nav {
+        ul {
+            width: 60%;
+        }
+    }
+}

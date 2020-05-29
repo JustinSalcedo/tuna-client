@@ -1,0 +1,48 @@
+@import '../variables';
+
+.mymodal_screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    .mymodal-dialog {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 1140px;
+        border: 1px solid;
+        border-radius: $pad1;
+        padding: $pad2;
+        background: white;
+        .mymodal-header {
+            text-align: right;
+            height: $pad4;
+        }
+        .mymodal-body {
+            text-align: center;
+            .center_logo {
+                display: flex;
+                justify-content: center;
+                img {
+                    width: $size3;
+                }
+                margin-bottom: $pad4;
+            }
+            h2 {
+                margin-bottom: $pad4;
+            }
+            .container-fluid {
+                text-align: left;
+                margin-bottom: $pad4;
+            }
+        }
+    }
+}
+

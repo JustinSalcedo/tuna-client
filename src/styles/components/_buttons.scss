@@ -1,0 +1,21 @@
+@import '../variables';
+
+.primary_button {
+    padding: 0 $pad2;
+    border: 2px solid;
+    border-radius: $pad1;
+    height: $size2;
+    cursor: pointer;
+}
+
+.secondary_button {
+    border: none;
+    border-radius: $pad1;
+    height: $size2;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.mini-button {
+    height: $size1;
+}

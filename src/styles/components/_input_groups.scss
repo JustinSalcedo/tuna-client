@@ -1,0 +1,62 @@
+@import '../variables';
+
+.input_group {
+    display: flex;
+    flex-direction: column;
+    .input_text, .input_select {
+        border: 1px solid;
+        border-radius: $pad1;
+        height: $size2;
+        padding: 0 $pad1;
+    }
+    .input_textarea {
+        border: 1px solid;
+        border-radius: $pad1;
+        height: $size4;
+        padding: $pad1;
+    }
+}
+
+.auto_input_group {
+    display: inline;
+    .auto_input_text {
+        border: none;
+        margin-left: $pad2;
+    }
+}
+
+.auto_input_list {
+    display: flex;
+    flex-direction: column;
+    .auto_input_text {
+        border: none;
+        margin-left: $pad2;
+    }
+}
+
+.input_checkbox, .input_radio {
+    width: $size1;
+    height: $size1;
+    border-radius: $pad1;
+}
+
+.input_file {
+    color: transparent;
+    height: $size2;
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    &::before{
+        content: '';
+        display: inline-block;
+        border: 1px solid;
+        border-radius: $pad1;
+        height: $size2;
+        padding: $pad1;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        color: black;
+    }
+}
