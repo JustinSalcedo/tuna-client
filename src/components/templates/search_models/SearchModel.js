@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import { GlobalContext } from '../context/GlobalState'
@@ -7,13 +7,8 @@ import { BrowseTable } from './BrowseTable'
 import { BrowseFeed } from './BrowseFeed'
 
 export const SearchModel = () => {
-	const [reset, setReset] = useState(false)
 
-	const { modelId, getSections, models, updateSections, resetState } = useContext(GlobalContext)
-
-	// if(!models) {
-	// 	getModels()
-	// }
+	const { modelId, getSections, models, updateSections } = useContext(GlobalContext)
 
 	const searchSections = () => {
 		const [model] = models.filter(model => modelId === model.id)

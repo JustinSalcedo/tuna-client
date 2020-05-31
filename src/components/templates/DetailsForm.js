@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { GlobalContext } from './context/GlobalState'
 
 export const DetailsForm = () => {
-	const { newTags, addDetails, newTemplate, saveTemplate, catchError, resetState, setModal } = useContext(GlobalContext)
+	const { newTags, addDetails, newTemplate, resetState, setModal, setRender } = useContext(GlobalContext)
 	
 	const [name, setName] = useState('')
 	const [description, setDescription] = useState('')
@@ -18,23 +18,10 @@ export const DetailsForm = () => {
 		}
 
 		addDetails(myTemplate)
-		submitSimulation(newTemplate)
-			.then(upload => {
-				saveTemplate(upload)
-				if(id) {
-					window.open("localhost:3000/templates/render/" + upload.id, "_blank")
-				}
-			})
-			.catch(err => catchError(err))
-	}
-
-	const submitSimulation = (template) => {
-		return new Promise((resolve, reject) => {
-			const key = true
-			if(key) {
-				resolve(template)
-			} else reject("Here's an error")
-		})
+		setModal(true)
+		if(id) {
+			setRender(true)
+		}
 	}
 
 	const verifier = () => {
@@ -44,11 +31,9 @@ export const DetailsForm = () => {
 			return (
 				<div className="row">
 					<button className="btn primary_button" onClick={e => {
-						setModal(true)
 						savingTemplate(e)
 					}} >Save</button>
 					<button className="btn primary_button" onClick={e => {
-						setModal(true)
 						savingTemplate(e, true)
 					}} >{"Save & Render"}</button>
 				</div>
@@ -88,8 +73,8 @@ export const DetailsForm = () => {
 			</form>
 			<div className="submit_buttons">
 				{verifier()}
-				<Link to="search_models">
-					<button className="btn secondary_button" onClick={resetState}>Reset</button>
+				<Link to="search_models" onClick={resetState}>
+					<button className="btn secondary_button">Reset</button>
 				</Link>
 			</div>
       	</>

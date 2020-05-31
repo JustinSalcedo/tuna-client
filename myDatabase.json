@@ -20,6 +20,13 @@
         { "id": 4, "category": "productDive", "tag": "section", "children": ["3", "7", "6"], "layout": "4", "description": "It's hard to treat my deficit"},
         { "id": 5, "category": "socialProof", "tag": "section", "children": ["6", "5", "4"], "layout": "5", "description": "I need help"}
     ],
+    "categories":[
+        { "_id": "header", "count": 4 },
+        { "_id": "article", "count": 2 },
+        { "_id": "footer", "count": 6 },
+        { "_id": "productDive", "count": 1 },
+        { "_id": "socialProof", "count": 9 }
+    ],
     "components":[
         { "id": 1, "type": "navbar", "tag": "nav", "children": ["2", "3", "4"], "description": "My towel is blue"},
         { "id": 2, "type": "current_hours", "tag": "div", "nodes": ["p", "span"], "description": "Useful with Vanilla Javascript"},

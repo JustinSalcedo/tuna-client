@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom'
 import { GlobalContext } from './context/GlobalState'
 
 export const Modal = () => {
-	const { newTemplate, modalOn, setModal, resetState, renderOn, setRender } = useContext(GlobalContext)
+	const { newModel, modalOn, setModal, resetState, renderOn, setRender } = useContext(GlobalContext)
 
-	const [templateItem, setTemplateItem] = useState(null)
+	const [modelItem, setModelItem] = useState(null)
 	const [errorLog, setErrorLog] = useState(null)
 	const [loaded, setLoaded] = useState(false)
 
-	const templateFunction = async () => {
-		const children = newTemplate.children.length !== 0
-		const { name, category, structure, color, font } = newTemplate
+	const modelFunction = async () => {
+		const children = newModel.children.length !== 0
+		const { category, model, structure } = newModel
 		try {
-			if(children && category && name && structure && color && font) {
-				await submitSimulation(newTemplate)
+			if(children && category && model && structure) {
+				await submitSimulation(newModel)
 					.then(res => {
-						setTemplateItem(res)
+						setModelItem(res)
 						setLoaded(true)
 						if(renderOn) {
-							window.open("localhost:3000/templates/render/" + res._id, "_blank")
+							window.open("localhost:3000/sections/render/" + res._id, "_blank")
 							setRender(false)
 						}
 					})
@@ -39,7 +39,7 @@ export const Modal = () => {
 		})
 	}
 
-	if(modalOn) { templateFunction() }
+	if(modalOn) { modelFunction() }
 	
 	const displayModal = () => {
 		return {
@@ -61,27 +61,29 @@ export const Modal = () => {
 				<div className="mymodal-body">
 				{loaded ? (
 					<div>
-						{templateItem ? (
+						{modelItem ? (
 						<>
 							<div className="center_logo">
 								<img src="../../images/lifether_rhombus.png" alt="Welcome, Tunner..." />
 							</div>
-							<h2>Template saved</h2>
+							<h2>Model saved</h2>
 							<div className="container-fluid">
 								<div className="row">
 									<div className="col-4 offset-4">
-										<p><span className="response_output">{templateItem.name}</span></p>
+										<p><span className="response_output">{modelItem.model}</span></p>
 									</div>
 								</div>
 								<div className="row">
 									<div className="col-2 offset-4">
-										<p>Category: <span className="response_output">{templateItem.category}</span></p>
-										<p>Structure: <span className="response_output">{templateItem.structure}</span></p>
-										<p>ID: <span className="response_output monospace">{templateItem._id}</span></p>
+										<p>Category: <span className="response_output">{modelItem.category}</span></p>
+										<p>Structure: <span className="response_output">{modelItem.structure}</span></p>
+										<p>ID: <span className="response_output monospace">{modelItem._id}</span></p>
 									</div>
 									<div className="col-2">
-										<p>Color palette: <span className="response_output">{templateItem.color}</span></p>
-										<p>Font pairing: <span className="response_output">{templateItem.font}</span></p>
+										<p>Sections(s): 
+											<span className="response_output">{modelItem.children.length >= 40 ? modelItem.children
+											.join(", ").substr(0, 40) : modelItem.children.join(", ")}</span>
+										</p>
 									</div>
 								</div>
 							</div>
@@ -104,15 +106,15 @@ export const Modal = () => {
 				{loaded ? (
 					<div className="submit_buttons">
 						<div className="row">
-							<Link to="/templates" onClick={() => {
+							<Link to="/models" onClick={() => {
 								setModal(false)
 								resetState()
 							}}>
 								<button className="btn secondary_button">Back home</button>
 							</Link>
 							<button className="btn primary_button" onClick={() => setModal(false)}>Continue editing</button>
-							{templateItem ? (
-								<Link to="search_models" onClick={() => {
+							{modelItem ? (
+								<Link to="search_components" onClick={() => {
 									setModal(false)
 									resetState()
 								}}>

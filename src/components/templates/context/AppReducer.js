@@ -61,16 +61,6 @@ export default (state, action) => {
                 ...state,
                 newTemplate: { ...state.newTemplate, name: action.payload.name, description: desc}
             }
-        case 'SAVE_TEMPLATE':
-            return {
-                ...state,
-                savedTemplate: action.payload
-            }
-        case 'CATCH_ERROR':
-            return {
-                ...state,
-                errorLog: action.payload
-            }
         case 'RESET_STATE':            
             return {
                 models: state.models,
@@ -95,14 +85,18 @@ export default (state, action) => {
                     fontSams: ''
                 },
                 modelId: '',
-                savedTemplate: undefined,
-                errorLog: undefined,
-                modalOn: false
+                modalOn: false,
+                renderOn: false
             }
         case 'SET_MODAL':
             return {
                 ...state,
                 modalOn: action.payload
+            }
+        case 'SET_RENDER':
+            return {
+                ...state,
+                renderOn: action.payload
             }
         default:
             return state

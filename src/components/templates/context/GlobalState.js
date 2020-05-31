@@ -32,9 +32,8 @@ const initialState = {
         fontSams: ''
     },
     modelId: '',
-    savedTemplate: undefined,
-    errorLog: undefined,
-    modalOn: false
+    modalOn: false,
+    renderOn: false
 
 
     /* Models done */
@@ -76,9 +75,8 @@ const initialState = {
     //     fontSams: ''
     // },
     // modelId: 1,
-    // savedTemplate: undefined,
-    // errorLog: undefined,
-    // modalOn: false
+    // modalOn: false,
+    // renderOn: false
 
 
     /* Sections done */
@@ -140,9 +138,8 @@ const initialState = {
     //     fontSams: ''
     // },
     // modelId: 1,
-    // savedTemplate: undefined,
-    // errorLog: undefined,
-    // modalOn: false
+    // modalOn: false,
+    // renderOn: false
 
 
     /* Colors and fonts done */
@@ -205,9 +202,8 @@ const initialState = {
     //     fontSams: "julius sans, archivo narrow"
     // },
     // modelId: 1,
-    // savedTemplate: undefined,
-    // errorLog: undefined,
-    // modalOn: false
+    // modalOn: false,
+    // renderOn: false
 }
 
 // Create context
@@ -294,20 +290,6 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
-    function saveTemplate(template) {
-        dispatch({
-            type: 'SAVE_TEMPLATE',
-            payload: template
-        })
-    }
-
-    function catchError(error) {
-        dispatch({
-            type: 'CATCH_ERROR',
-            payload: error
-        })
-    }
-
     function resetState() {
         dispatch({
             type: 'RESET_STATE'
@@ -317,6 +299,13 @@ export const GlobalProvider = ({ children }) => {
     function setModal(status) {
         dispatch({
             type: 'SET_MODAL',
+            payload: status
+        })
+    }
+
+    function setRender(status) {
+        dispatch({
+            type: 'SET_RENDER',
             payload: status
         })
     }
@@ -334,6 +323,7 @@ export const GlobalProvider = ({ children }) => {
         savedTemplate: state.savedTemplate,
         errorLog: state.errorLog,
         modalOn: state.modalOn,
+        renderOn: state.renderOn,
         resetState,
         getModels,
         addModel,
@@ -346,9 +336,8 @@ export const GlobalProvider = ({ children }) => {
         getFonts,
         addFont,
         addDetails,
-        saveTemplate,
-        catchError,
-        setModal
+        setModal,
+        setRender
     }}>
         {children}
     </GlobalContext.Provider>)
