@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom'
 import { GlobalContext } from './context/GlobalState'
 
 export const DetailsForm = () => {
-	const { addDetails, newModel, resetState, setModal, setRender } = useContext(GlobalContext)
+	const { addDetails, newModel, resetState, setModal, setRender, resetting } = useContext(GlobalContext)
 	
 	const [model, setModel] = useState('')
 	const [category, setCategory] = useState('')
 	const [structure, setStructure] = useState('')
+	const [currentStatus, setCurrentStatus] = useState(resetting)
 
 	const savingModel = (e, id) => {
 		e.preventDefault()
@@ -24,6 +25,18 @@ export const DetailsForm = () => {
 		if(id) {
 			setRender(true)
 		}
+	}
+
+	const clearForm = () => {
+		resetState()
+		setModel('')
+		setCategory('')
+		setStructure('')
+	}
+
+	if(currentStatus !== resetting) {
+		clearForm()
+		setCurrentStatus(resetting)
 	}
 
 	const verifier = () => {
@@ -54,17 +67,17 @@ export const DetailsForm = () => {
 			<form className="details_form" onSubmit={savingModel} >
 				<div className="input_group">
 						<label htmlFor="name">Model title</label>
-						<input className="input_text" type="text" name="model" 
+						<input className="input_text" type="text" name="model" value={model}
 						onChange={e => setModel(e.target.value)} />
 				</div>
 				<div className="input_group">
 						<label htmlFor="name">Category</label>
-						<input className="input_text" type="text" name="category" 
+						<input className="input_text" type="text" name="category" value={category}
 						onChange={e => setCategory(e.target.value)} />
 				</div>
 				<div className="input_group">
 						<label htmlFor="name">Structure</label>
-						<input className="input_text" type="text" name="structure" 
+						<input className="input_text" type="text" name="structure" value={structure}
 						onChange={e => setStructure(e.target.value)} />
 				</div>
 				<div className="auto_input_list">
@@ -74,7 +87,7 @@ export const DetailsForm = () => {
 			</form>
 			<div className="submit_buttons">
 				{verifier()}
-				<Link to="search_categories" onClick={resetState}>
+				<Link to="search_categories" onClick={clearForm}>
 					<button className="btn secondary_button">Reset</button>
 				</Link>
 			</div>

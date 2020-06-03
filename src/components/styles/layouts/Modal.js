@@ -4,56 +4,44 @@ import { Link } from 'react-router-dom'
 import { GlobalContext } from './context/GlobalState'
 
 export const Modal = () => {
-	const { newComponent, modalOn, setModal, resetState, renderOn, setRender, childrenType } = useContext(GlobalContext)
+	const { newLayout, modalOn, setModal, resetState, renderOn, setRender, file } = useContext(GlobalContext)
 
-	const [componentItem, setComponentItem] = useState(null)
+	const [layoutItem, setLayoutItem] = useState(null)
 	const [errorLog, setErrorLog] = useState(null)
 	const [loaded, setLoaded] = useState(false)
 	const [childrenCheck, setChildrenCheck] = useState(false)
 	const [verified, setVerified] = useState(null)
 
-	const componentFunction = async () => {
-		
-		const { type, tag, description } = newComponent
-		
-		if(!verified) {
-			setVerified({ type, tag, description })
+	const layoutFunction = async () => {
+		const { tags, name, description } = newLayout
+		// const formData = new FormData({
+		// 	file,
+		// 	tags,
+		// 	name,
+		// 	description
+		// })
+		// const formData = new FormData()
+		// const layoutFile = { ...newLayout, file }
+		// formData.append(
+		// 	name,
+		// 	tags,
+		// 	description,
+		// 	file
+		// )
 
-			switch (childrenType) {
-				case 'COMPONENTS':
-					setChildrenCheck(newComponent.children !== 0)
-					setVerified({
-						type, tag, description,
-						children: newComponent.children
-					})
-					break;
-				case 'NODES':
-					setChildrenCheck(newComponent.nodes !== 0)
-					setVerified({
-						type, tag, description,
-						nodes: newComponent.nodes
-					})
-					break;
-				case 'PLACEHOLDER':
-					setChildrenCheck(newComponent.placeholder)
-					setVerified({
-						type, tag, description,
-						placeholder: newComponent.placeholder
-					})
-					break;
-				default:
-					break;
-			}
+		if(!verified) {
+			setVerified({ name, tags, description, file })
+			setChildrenCheck(tags.length !== 0)
 		}
 
 		try {
-			if(childrenCheck && type && tag) {
+			if(file && childrenCheck && name) {
 				await submitSimulation(verified)
 					.then(res => {
-						setComponentItem(res)
+						setLayoutItem(res)
 						setLoaded(true)
 						if(renderOn) {
-							window.open("localhost:3000/sections/render/" + res._id, "_blank")
+							window.open("localhost:3000/layouts/render/" + res._id, "_blank")
 							setRender(false)
 						}
 					})
@@ -72,12 +60,12 @@ export const Modal = () => {
 		})
 	}
 
-	if(modalOn) { componentFunction() }
+	if(modalOn) { layoutFunction() }
 
 	const resetModal = () => {
 		setModal(false)
 		resetState()
-		setComponentItem(null)
+		setLayoutItem(null)
 		setVerified(null)
 		setLoaded(false)
 	}
@@ -85,46 +73,6 @@ export const Modal = () => {
 	const displayModal = () => {
 		return {
 			visibility: modalOn ? 'visible' : 'hidden'
-		}
-	}
-	
-	const childrenFunction = () => {
-		let typeList = []
-		
-		switch (childrenType) {
-			case 'COMPONENTS':
-				typeList = componentItem.children
-				return (
-					<>
-						<p>Component(s): 
-							<span className="response_output">{typeList.length >= 40 ? typeList
-							.join(", ").substr(0, 40) : typeList.join(", ")}</span>
-						</p>
-					</>
-				)
-
-			case 'NODES':
-				typeList = componentItem.nodes
-				return (
-					<>
-						<p>Node(s): 
-							<span className="response_output">{typeList.length >= 40 ? typeList
-							.join(", ").substr(0, 40) : typeList.join(", ")}</span>
-						</p>
-					</>
-				)
-
-			case 'PLACEHOLDER':
-				return (
-					<>
-						<p>Placeholder: 
-							<span className="response_output">{componentItem.placeholder}</span>
-						</p>
-					</>
-				)
-		
-			default:
-				return (<></>)
 		}
 	}
 	
@@ -142,21 +90,23 @@ export const Modal = () => {
 				<div className="mymodal-body">
 				{loaded ? (
 					<div>
-						{componentItem ? (
+						{layoutItem ? (
 						<>
 							<div className="center_logo">
 								<img src="../../images/lifether_rhombus.png" alt="Welcome, Tunner..." />
 							</div>
-							<h2>Section saved</h2>
+							<h2>Layout saved</h2>
 							<div className="container-fluid">
 								<div className="row">
 									<div className="col-2 offset-4">
-										<p>Type: <span className="response_output">{componentItem.type}</span></p>
-										<p>Tag: <span className="response_output">{componentItem.tag}</span></p>
-										<p>ID: <span className="response_output monospace">{componentItem._id}</span></p>
+										<p><span className="response_output">{layoutItem.name}</span></p>
+										<p>ID: <span className="response_output monospace">{layoutItem._id}</span></p>
 									</div>
 									<div className="col-2">
-										{childrenFunction()}
+										<p>Tags: 
+											<span className="response_output">{layoutItem.tags.length >= 40 ? layoutItem.tags
+											.join(", ").substr(0, 40) : layoutItem.tags.join(", ")}</span>
+										</p>
 									</div>
 								</div>
 							</div>
@@ -179,15 +129,15 @@ export const Modal = () => {
 				{loaded ? (
 					<div className="submit_buttons">
 						<div className="row">
-							<Link to="/sections" onClick={() => {
+							<Link to="/styles/layouts" onClick={() => {
 								setModal(false)
 								resetState()
 							}}>
 								<button className="btn secondary_button">Back home</button>
 							</Link>
 							<button className="btn primary_button" onClick={() => setModal(false)}>Continue editing</button>
-							{componentItem ? (
-								<Link to="search_components" onClick={() => {
+							{layoutItem ? (
+								<Link to="add" onClick={() => {
 									resetModal()
 								}}>
 									<button className="btn primary_button">Add new one</button>

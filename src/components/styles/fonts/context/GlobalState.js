@@ -4,20 +4,13 @@ import AppReducer from './AppReducer'
 // Initial state
 const initialState = {
     /* Initial State */
-    categories: [
-        { "_id": "header", "count": 4 },
-        { "_id": "article", "count": 2 },
-        { "_id": "footer", "count": 6 },
-        { "_id": "productDive", "count": 1 },
-        { "_id": "socialProof", "count": 9 }
-    ],
-    newModel: {
-        model: '',
-        children: [],
-        category: '',
-        structure: ''
+    newFont: {
+        name: '',
+        tags: [],
+        faces: [],
+        description: ''
     },
-    sectionList: [],
+    file: null,
     modalOn: false,
     renderOn: false,
     resetting: false
@@ -34,24 +27,10 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState)
 
     // Actions
-    function addCategory(category) {
+    function uploadFile(file) {
         dispatch({
-            type: 'ADD_CATEGORY',
-            payload: category
-        })
-    }
-
-    function getCategories(categories) {
-        dispatch({
-            type: 'GET_CATEGORIES',
-            payload: categories
-        })
-    }
-
-    function updateSections(sections) {
-        dispatch({
-            type: 'UPDATE_SECTIONS',
-            payload: sections
+            type: 'UPLOAD_FILE',
+            payload: file
         })
     }
 
@@ -82,20 +61,25 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
+    function setSamples(samples) {
+        dispatch({
+            type: 'SET_SAMPLES',
+            payload: samples
+        })
+    }
+
     return (<GlobalContext.Provider value={{
-        categories: state.categories,
-        newModel: state.newModel,
-        sectionList: state.sectionList,
+        newFont: state.newFont,
+        file: state.file,
         modalOn: state.modalOn,
         renderOn: state.renderOn,
         resetting: state.resetting,
+        uploadFile,
         resetState,
-        addCategory,
-        getCategories,
-        updateSections,
         addDetails,
         setModal,
-        setRender
+        setRender,
+        setSamples
     }}>
         {children}
     </GlobalContext.Provider>)

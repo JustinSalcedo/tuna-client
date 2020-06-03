@@ -5,16 +5,18 @@ import { TableElement } from './TableElement'
 export const BrowseTable = ({ styles, tagging, addStyle }) => {
 
 	const randomSelection = () => {
-		const randomId = Math.floor(Math.random() * styles.length)
-		const randomStyle = styles[randomId]
-
-		const newStyle = {
-            id: randomStyle.id,
-            name: randomStyle.name,
-            samples: randomStyle[tagging[1]].join(", ")
-        }
-
-		addStyle(newStyle)
+		if(styles.length !== 0) {
+			const randomId = Math.floor(Math.random() * styles.length)
+			const randomStyle = styles[randomId]
+	
+			const newStyle = {
+				id: randomStyle.id,
+				name: randomStyle.name,
+				samples: randomStyle[tagging[1]].join(", ")
+			}
+	
+			addStyle(newStyle)
+		}
 	}
 	
 	return (

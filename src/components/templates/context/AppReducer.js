@@ -86,7 +86,8 @@ export default (state, action) => {
                 },
                 modelId: '',
                 modalOn: false,
-                renderOn: false
+                renderOn: false,
+                resetting: !state.resetting
             }
         case 'SET_MODAL':
             return {

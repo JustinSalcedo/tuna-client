@@ -54,11 +54,11 @@ td {
   font-family: 'Lucida Console', monospace;
 }
 
-.main_navbar {
+.main_navbar, .styles_navbar {
   margin-bottom: 40px;
 }
 
-.main_navbar .center_logo {
+.main_navbar .center_logo, .styles_navbar .center_logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,11 +68,11 @@ td {
   margin-bottom: 40px;
 }
 
-.main_navbar .center_logo img {
+.main_navbar .center_logo img, .styles_navbar .center_logo img {
   width: 160px;
 }
 
-.main_navbar .nav_links ul {
+.main_navbar .nav_links ul, .styles_navbar .nav_links ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,15 +86,15 @@ td {
   margin-bottom: 40px;
 }
 
-.main_navbar .nav_links ul li {
+.main_navbar .nav_links ul li, .styles_navbar .nav_links ul li {
   padding: 16px 0;
 }
 
-.main_navbar .nav_links ul li.active {
+.main_navbar .nav_links ul li.active, .styles_navbar .nav_links ul li.active {
   border-bottom: 2px solid;
 }
 
-.main_navbar .sub-nav ul {
+.main_navbar .sub-nav ul, .styles_navbar .sub-nav ul {
   width: 60%;
 }
 
@@ -153,26 +153,15 @@ td {
 }
 
 .input_file {
-  color: transparent;
   height: 40px;
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .input_file::-webkit-file-upload-button {
   visibility: hidden;
-}
-
-.input_file::before {
-  content: '';
-  display: inline-block;
-  border: 1px solid;
-  border-radius: 8px;
-  height: 40px;
-  padding: 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  color: black;
 }
 
 .primary_button {
@@ -231,6 +220,10 @@ td {
 
 .main_dashboard .main_panel .browse_feed form .input_group .input-short {
   width: 160px;
+}
+
+.main_dashboard .main_panel .browse_feed form .input_checkbox {
+  margin-right: 40px;
 }
 
 .main_dashboard .main_panel .browse_feed #formStyles .input_text {

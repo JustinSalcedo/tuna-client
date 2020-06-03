@@ -8,16 +8,18 @@ export const BrowseTable = () => {
 	const { models, addModel } = useContext(GlobalContext)
 
 	const randomSelection = () => {
-		const randomId = Math.floor(Math.random() * models.length)
-		const randomModel = models[randomId]
-
-		const newModel = {
-			id: randomModel.id,
-			category: randomModel.category,
-			structure: randomModel.structure
+		if(models.length !== 0) {
+			const randomId = Math.floor(Math.random() * models.length)
+			const randomModel = models[randomId]
+	
+			const newModel = {
+				id: randomModel.id,
+				category: randomModel.category,
+				structure: randomModel.structure
+			}
+	
+			addModel(newModel)
 		}
-
-		addModel(newModel)
 	}
 	
 	return (

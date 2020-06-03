@@ -42,7 +42,8 @@ export default (state, action) => {
                 },
                 sectionList: [],
                 modalOn: false,
-                renderOn: false
+                renderOn: false,
+                resetting: !state.resetting
             }
         case 'SET_MODAL':
             return {

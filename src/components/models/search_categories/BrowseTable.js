@@ -10,16 +10,18 @@ export const BrowseTable = ({ section }) => {
 	const { updateSections, sectionList, categories } = useContext(GlobalContext)
 	
 	const randomSelection = () => {
-		const randomId = Math.floor(Math.random() * categories.length)
-		const randomSection = categories[randomId]
-
-		const newSectionList = sectionList.map(item => {
-			if (item.id === section.id) {
-				return {...item, category: randomSection._id}
-			} else return {...item}
-		})
-
-		updateSections(newSectionList)
+		if(categories.length !== 0) {
+			const randomId = Math.floor(Math.random() * categories.length)
+			const randomSection = categories[randomId]
+	
+			const newSectionList = sectionList.map(item => {
+				if (item.id === section.id) {
+					return {...item, category: randomSection._id}
+				} else return {...item}
+			})
+	
+			updateSections(newSectionList)
+		}
 	}
 
 	return (

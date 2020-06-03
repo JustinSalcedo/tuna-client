@@ -50,7 +50,9 @@ export default (state, action) => {
                 },
                 componentList: [],
                 modalOn: false,
-                renderOn: false
+                renderOn: false,
+                childrenType: null,
+                resetting: !state.resetting
             }
         case 'SET_MODAL':
             return {

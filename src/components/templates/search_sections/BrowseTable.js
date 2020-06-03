@@ -9,17 +9,19 @@ export const BrowseTable = ({ category, filteredSections }) => {
 	const { updateSections, sectionList, checkSections } = useContext(GlobalContext)
 	
 	const randomSelection = () => {
-		const randomId = Math.floor(Math.random() * filteredSections.length)
-		const randomSection = filteredSections[randomId]
-
-		const newSectionList = sectionList.map(item => {
-			if (item.id === category.id) {
-				return {...item, docId: randomSection.id}
-			} else return {...item}
-		})
-
-		const checkedList = verifyList(newSectionList)
-		updateSections(checkedList)
+		if(filteredSections.length !== 0) {
+			const randomId = Math.floor(Math.random() * filteredSections.length)
+			const randomSection = filteredSections[randomId]
+	
+			const newSectionList = sectionList.map(item => {
+				if (item.id === category.id) {
+					return {...item, docId: randomSection.id}
+				} else return {...item}
+			})
+	
+			const checkedList = verifyList(newSectionList)
+			updateSections(checkedList)
+		}
 	}
 
 	const verifyList = list => {

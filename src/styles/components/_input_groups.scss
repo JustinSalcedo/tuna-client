@@ -41,22 +41,12 @@
 }
 
 .input_file {
-    color: transparent;
     height: $size2;
+    padding: $pad1;
+    border: 1px solid;
+    border-radius: $pad1;
+    cursor: pointer;
     &::-webkit-file-upload-button {
         visibility: hidden;
-    }
-    &::before{
-        content: '';
-        display: inline-block;
-        border: 1px solid;
-        border-radius: $pad1;
-        height: $size2;
-        padding: $pad1;
-        outline: none;
-        white-space: nowrap;
-        -webkit-user-select: none;
-        cursor: pointer;
-        color: black;
     }
 }

@@ -6,6 +6,7 @@ import { TemplateDashboard } from './components/templates/TemplateDashboard'
 import { ModelDashboard } from './components/models/ModelDashboard'
 import { SectionDashboard } from './components/sections/SectionDashboard'
 import { ComponentDashboard } from './components/components/ComponentDashboard'
+import { StylesMenu } from './components/styles/StylesMenu'
 
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/models" component={ModelDashboard} />
       <Route path="/sections" component={SectionDashboard} />
       <Route path="/components" component={ComponentDashboard} />
+      <Route path="/styles" component={StylesMenu} />
     </Router>
   );
 }

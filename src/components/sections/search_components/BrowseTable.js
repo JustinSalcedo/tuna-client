@@ -9,16 +9,18 @@ export const BrowseTable = ({ compoEle }) => {
 	const { updateComponents, componentList, components } = useContext(GlobalContext)
 	
 	const randomSelection = () => {
-		const randomId = Math.floor(Math.random() * components.length)
-		const randomComponent = components[randomId]
-
-		const newComponentList = componentList.map(item => {
-			if (item.id === compoEle.id) {
-				return {...item, docId: randomComponent._id, type: randomComponent.type, tag: randomComponent.tag}
-			} else return {...item}
-		})
-
-		updateComponents(newComponentList)
+		if(components.length !== 0) {
+			const randomId = Math.floor(Math.random() * components.length)
+			const randomComponent = components[randomId]
+	
+			const newComponentList = componentList.map(item => {
+				if (item.id === compoEle.id) {
+					return {...item, docId: randomComponent._id, type: randomComponent.type, tag: randomComponent.tag}
+				} else return {...item}
+			})
+	
+			updateComponents(newComponentList)
+		}
 	}
 
 	return (

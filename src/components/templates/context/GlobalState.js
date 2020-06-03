@@ -33,7 +33,8 @@ const initialState = {
     },
     modelId: '',
     modalOn: false,
-    renderOn: false
+    renderOn: false,
+    resetting: false
 
 
     /* Models done */
@@ -139,7 +140,8 @@ const initialState = {
     // },
     // modelId: 1,
     // modalOn: false,
-    // renderOn: false
+    // renderOn: false,
+    // resetting: false
 
 
     /* Colors and fonts done */
@@ -203,7 +205,8 @@ const initialState = {
     // },
     // modelId: 1,
     // modalOn: false,
-    // renderOn: false
+    // renderOn: false,
+    // resetting: false
 }
 
 // Create context
@@ -320,10 +323,9 @@ export const GlobalProvider = ({ children }) => {
         newTemplate: state.newTemplate,
         newTags: state.newTags,
         modelId: state.modelId,
-        savedTemplate: state.savedTemplate,
-        errorLog: state.errorLog,
         modalOn: state.modalOn,
         renderOn: state.renderOn,
+        resetting: state.resetting,
         resetState,
         getModels,
         addModel,

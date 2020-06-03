@@ -29,7 +29,8 @@ const initialState = {
     layouts: [],
     componentList: [],
     modalOn: false,
-    renderOn: false
+    renderOn: false,
+    resetting: false
 
 
     /* Categories done */
@@ -106,6 +107,7 @@ export const GlobalProvider = ({ children }) => {
         layouts: state.layouts,
         modalOn: state.modalOn,
         renderOn: state.renderOn,
+        resetting: state.resetting,
         resetState,
         getComponents,
         updateComponents,

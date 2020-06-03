@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom'
 import { GlobalContext } from './context/GlobalState'
 
 export const DetailsForm = () => {
-	const { addDetails, newComponent, resetState, setModal, setRender, childrenType, componentList } = useContext(GlobalContext)
+	const { addDetails, newComponent, resetState, setModal, setRender, childrenType, componentList, resetting } = useContext(GlobalContext)
 	
 	const [type, setType] = useState('')
 	const [tag, setTag] = useState('')
 	const [description, setDescription] = useState('')
+	const [currentStatus, setCurrentStatus] = useState(resetting)
 
 	const childrenFunction = () => {
 		let typeList
@@ -63,6 +64,18 @@ export const DetailsForm = () => {
 		}
 	}
 
+	const clearForm = () => {
+		resetState()
+		setType('')
+		setTag('')
+		setDescription('')
+	}
+
+	if(currentStatus !== resetting) {
+		clearForm()
+		setCurrentStatus(resetting)
+	}
+
 	const verifier = () => {
 		let children
 
@@ -105,17 +118,17 @@ export const DetailsForm = () => {
 			<form className="details_form" onSubmit={savingSection} >
 				<div className="input_group">
 						<label htmlFor="name">Type</label>
-						<input className="input_text" type="text" name="type" 
+						<input className="input_text" type="text" name="type" value={type}
 						onChange={e => setType(e.target.value)} />
 				</div>
 				<div className="input_group">
 						<label htmlFor="name">Tag</label>
-						<input className="input_text" type="text" name="tag" 
+						<input className="input_text" type="text" name="tag" value={tag}
 						onChange={e => setTag(e.target.value)} />
 				</div>
 				<div className="input_group">
 						<label htmlFor="description">Description (optional)</label>
-						<textarea className="input_textarea" name="description" cols="30" rows="10" 
+						<textarea className="input_textarea" name="description" cols="30" rows="10" value={description}
 						onChange={e => setDescription(e.target.value)} ></textarea>
 				</div>
 				<div className="auto_input_list">
@@ -124,7 +137,7 @@ export const DetailsForm = () => {
 			</form>
 			<div className="submit_buttons">
 				{verifier()}
-				<Link to="create_component" onClick={resetState}>
+				<Link to="create_component" onClick={clearForm}>
 					<button className="btn secondary_button">Reset</button>
 				</Link>
 			</div>

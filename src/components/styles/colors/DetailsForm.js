@@ -4,23 +4,26 @@ import { Link } from 'react-router-dom'
 import { GlobalContext } from './context/GlobalState'
 
 export const DetailsForm = () => {
-	const { addDetails, newSection, resetState, setModal, newTags, setRender, resetting } = useContext(GlobalContext)
+	const { addDetails, resetState, setModal, setRender, file, newColor, resetting} = useContext(GlobalContext)
 	
-	const [category, setCategory] = useState('')
-	const [tag, setTag] = useState('')
+	const [name, setName] = useState('')
+	const [tags, setTags] = useState('')
 	const [description, setDescription] = useState('')
 	const [currentStatus, setCurrentStatus] = useState(resetting)
 
-	const savingSection = (e, id) => {
+	const savingColor = (e, id) => {
 		e.preventDefault()
 		
-		const mySection = {
-			category,
-			tag,
+		let tagArray = tags.split(",")
+		tagArray = tagArray.map(tag => tag.trim())
+
+		const myColor = {
+			name,
+			tags: tagArray,
 			description
 		}
 
-		addDetails(mySection)
+		addDetails(myColor)
 		setModal(true)
 		if(id) {
 			setRender(true)
@@ -29,8 +32,8 @@ export const DetailsForm = () => {
 
 	const clearForm = () => {
 		resetState()
-		setCategory('')
-		setTag('')
+		setName('')
+		setTags('')
 		setDescription('')
 	}
 
@@ -40,17 +43,16 @@ export const DetailsForm = () => {
 	}
 
 	const verifier = () => {
-		const children = newSection.children.length !== 0
-		const { layout } = newSection
+		const childrenCheck = newColor.samples.length !== 0
 
-		if (children && category && tag && layout) {
+		if (file && (file.type === "text/css") && tags && name && childrenCheck) {
 			return (
 				<div className="row">
 					<button className="btn primary_button" onClick={e => {
-						savingSection(e)
+						savingColor(e)
 					}} >Save</button>
 					<button className="btn primary_button" onClick={e => {
-						savingSection(e, true)
+						savingColor(e, true)
 					}} >{"Save & Render"}</button>
 				</div>
 			)
@@ -59,30 +61,26 @@ export const DetailsForm = () => {
 
 	return (
     	<>
-			<form className="details_form" onSubmit={savingSection} >
+			<form className="details_form" onSubmit={savingColor} >
 				<div className="input_group">
-						<label htmlFor="name">Category</label>
-						<input className="input_text" type="text" name="category" value={category}
-						onChange={e => setCategory(e.target.value)} />
+						<label htmlFor="name">Name</label>
+						<input className="input_text" type="text" name="name" value={name}
+						onChange={e => setName(e.target.value)} />
 				</div>
 				<div className="input_group">
-						<label htmlFor="name">Tag</label>
-						<input className="input_text" type="text" name="tag" value={tag}
-						onChange={e => setTag(e.target.value)} />
+						<label htmlFor="name">Tags</label>
+						<input className="input_text" type="text" name="tags" value={tags}
+						onChange={e => setTags(e.target.value)} />
 				</div>
 				<div className="input_group">
 						<label htmlFor="description">Description (optional)</label>
 						<textarea className="input_textarea" name="description" cols="30" rows="10" value={description}
 						onChange={e => setDescription(e.target.value)} ></textarea>
 				</div>
-				<div className="auto_input_group">
-						<label htmlFor="layout">Layout:</label>
-						<input class="auto_input_text" type="text" name="layout" value={newTags.layout} disabled />
-				</div>
 			</form>
 			<div className="submit_buttons">
 				{verifier()}
-				<Link to="search_components" onClick={clearForm}>
+				<Link to="add" onClick={clearForm}>
 					<button className="btn secondary_button">Reset</button>
 				</Link>
 			</div>

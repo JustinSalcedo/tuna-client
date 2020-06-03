@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import { GlobalContext } from './context/GlobalState'
 
 export const DetailsForm = () => {
-	const { newTags, addDetails, newTemplate, resetState, setModal, setRender } = useContext(GlobalContext)
+	const { newTags, addDetails, newTemplate, resetState, setModal, setRender, resetting } = useContext(GlobalContext)
 	
 	const [name, setName] = useState('')
 	const [description, setDescription] = useState('')
+	const [currentStatus, setCurrentStatus] = useState(resetting)
 
 	const savingTemplate = (e, id) => {
 		e.preventDefault()
@@ -22,6 +23,17 @@ export const DetailsForm = () => {
 		if(id) {
 			setRender(true)
 		}
+	}
+
+	const clearForm = () => {
+		resetState()
+		setName('')
+		setDescription('')
+	}
+
+	if(currentStatus !== resetting) {
+		clearForm()
+		setCurrentStatus(resetting)
 	}
 
 	const verifier = () => {
@@ -46,12 +58,12 @@ export const DetailsForm = () => {
 			<form className="details_form" onSubmit={savingTemplate} >
 				<div className="input_group">
 						<label htmlFor="name">Name</label>
-						<input className="input_text" type="text" name="name" 
+						<input className="input_text" type="text" name="name" value={name}
 						onChange={e => setName(e.target.value)} />
 				</div>
 				<div className="input_group">
 						<label htmlFor="description">Description (optional)</label>
-						<textarea className="input_textarea" name="description" cols="30" rows="10" 
+						<textarea className="input_textarea" name="description" cols="30" rows="10" value={description}
 						onChange={e => setDescription(e.target.value)} ></textarea>
 				</div>
 				<div className="auto_input_group">
@@ -73,7 +85,7 @@ export const DetailsForm = () => {
 			</form>
 			<div className="submit_buttons">
 				{verifier()}
-				<Link to="search_models" onClick={resetState}>
+				<Link to="search_models" onClick={clearForm}>
 					<button className="btn secondary_button">Reset</button>
 				</Link>
 			</div>
