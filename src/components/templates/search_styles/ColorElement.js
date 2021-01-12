@@ -9,13 +9,13 @@ export const ColorElement = () => {
 
     const [dropdown, setDropdown] = useState(false)
 
-    // Dummy list
-    const [stylesList, setStylesList] = useState([
-        { id: 4, file: "Vestibulum a sapien odio.", name: "Boats", tags: ["brown", "contrast", "ginger"], samples: ["#3d677b", "#a6a7a3", "#d3c7b1"] },
-        { id: 5, file: "Quisque eleifend vestibulum", name: "Renovation", tags: ["matching", "gold", "dark"], samples: ["#b67929", "#a3acb1", "#3c5b74"] },
-        { id: 6, file: "Nullam sagittis orci at neq", name: "Dull", tags: ["cyan", "cold", "greenery"], samples: ["#487549", "#abba82", "#a7b5b7", "#037c87", "#102020"] },
-        { id: 7, file: "Duis felis mi, venenatis ut", name: "Ceramic", tags: ["minimal", "brown", "matching", "coffe"], samples: ["#1d0f0b", "#796d5d", "#baae97", "#a6a7a5"] }
-    ])
+    /* Dummy list */
+    // const [stylesList, setStylesList] = useState([
+    //     { id: 4, file: "Vestibulum a sapien odio.", name: "Boats", tags: ["brown", "contrast", "ginger"], samples: ["#3d677b", "#a6a7a3", "#d3c7b1"] },
+    //     { id: 5, file: "Quisque eleifend vestibulum", name: "Renovation", tags: ["matching", "gold", "dark"], samples: ["#b67929", "#a3acb1", "#3c5b74"] },
+    //     { id: 6, file: "Nullam sagittis orci at neq", name: "Dull", tags: ["cyan", "cold", "greenery"], samples: ["#487549", "#abba82", "#a7b5b7", "#037c87", "#102020"] },
+    //     { id: 7, file: "Duis felis mi, venenatis ut", name: "Ceramic", tags: ["minimal", "brown", "matching", "coffe"], samples: ["#1d0f0b", "#796d5d", "#baae97", "#a6a7a5"] }
+    // ])
 
     const unselect = () => {
 		const newColor = {
@@ -31,7 +31,7 @@ export const ColorElement = () => {
         if (dropdown) {
             return (
                 <>
-                    <BrowseFeed styles={colors} getStyles={getColors} stylesList={stylesList} 
+                    <BrowseFeed styles={colors} getStyles={getColors} urlPost="http://127.0.0.1:3001/colors/search"
                     tagging={["Samples (HEX)", "samples", "color"]} addStyle={addColor} />
                 </>
             )

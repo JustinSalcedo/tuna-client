@@ -6,8 +6,8 @@ const initialState = {
     /* Initial State */
     newFont: {
         name: '',
-        tags: [],
-        faces: [],
+        tags: '',
+        faces: '',
         description: ''
     },
     file: null,

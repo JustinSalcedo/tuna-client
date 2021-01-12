@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import { GlobalContext } from './context/GlobalState'
 
@@ -15,12 +16,12 @@ export const Modal = () => {
 		const { category, tag, layout } = newSection
 		try {
 			if(children && category && tag && layout) {
-				await submitSimulation(newSection)
+				await axios.post("http://127.0.0.1:3001/sections/add", newSection)
 					.then(res => {
-						setSectionItem(res)
+						setSectionItem(res.data.body)
 						setLoaded(true)
 						if(renderOn) {
-							window.open("localhost:3000/sections/render/" + res._id, "_blank")
+							window.open("http://127.0.0.1:3001/sections/render/" + res.data.body._id, "_blank")
 							setRender(false)
 						}
 					})
@@ -39,7 +40,7 @@ export const Modal = () => {
 		})
 	}
 
-	if(modalOn) { sectionFunction() }
+	if(modalOn && !loaded) { sectionFunction() }
 	
 	const displayModal = () => {
 		return {

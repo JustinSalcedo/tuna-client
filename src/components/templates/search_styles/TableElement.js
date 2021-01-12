@@ -18,7 +18,7 @@ export const TableElement = ({ style, tagging, addStyle }) => {
 	
 	const selectStyle = () => {
 		const newStyle = {
-            id: style.id,
+            id: style._id,
             name: style.name,
             samples: style[tagging[0]].join(", ")
         }
@@ -30,7 +30,7 @@ export const TableElement = ({ style, tagging, addStyle }) => {
         <tr>
 			<td>
 				<input className="input_radio" type="radio" name="id"
-				onChange={selectStyle} checked={style.id === newTemplate[tagging[1]]} />
+				onChange={selectStyle} checked={style._id === newTemplate[tagging[1]]} />
 			</td>
 			<td>{style.name}</td>
 			<td>{tagsString}</td>

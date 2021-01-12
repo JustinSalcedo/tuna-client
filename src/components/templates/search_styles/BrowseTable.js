@@ -10,7 +10,7 @@ export const BrowseTable = ({ styles, tagging, addStyle }) => {
 			const randomStyle = styles[randomId]
 	
 			const newStyle = {
-				id: randomStyle.id,
+				id: randomStyle._id,
 				name: randomStyle.name,
 				samples: randomStyle[tagging[1]].join(", ")
 			}

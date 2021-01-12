@@ -5,11 +5,11 @@ import AppReducer from './AppReducer'
 const initialState = {
     /* Initial State */
     categories: [
-        { "_id": "header", "count": 4 },
-        { "_id": "article", "count": 2 },
-        { "_id": "footer", "count": 6 },
-        { "_id": "productDive", "count": 1 },
-        { "_id": "socialProof", "count": 9 }
+        // { "_id": "header", "count": 4 },
+        // { "_id": "article", "count": 2 },
+        // { "_id": "footer", "count": 6 },
+        // { "_id": "productDive", "count": 1 },
+        // { "_id": "socialProof", "count": 9 }
     ],
     newModel: {
         model: '',

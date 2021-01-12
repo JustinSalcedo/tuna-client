@@ -13,7 +13,7 @@ export const BrowseTable = () => {
 			const randomModel = models[randomId]
 	
 			const newModel = {
-				id: randomModel.id,
+				id: randomModel._id,
 				category: randomModel.category,
 				structure: randomModel.structure
 			}

@@ -6,7 +6,7 @@ const initialState = {
     /* Initial State */
     newLayout: {
         name: '',
-        tags: [],
+        tags: '',
         description: ''
     },
     file: null,

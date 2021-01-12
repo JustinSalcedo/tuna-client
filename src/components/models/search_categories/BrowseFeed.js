@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import axios from 'axios'
 
 import { GlobalContext } from '../context/GlobalState'
 
@@ -14,8 +15,11 @@ export const BrowseFeed = ({ section }) => {
 
         let keywordsString = keywords.split(",")
         keywordsString = keywordsString.map(word => word.trim())
-        submitSimulation(keywordsString)
-            .then(data => getCategories(data))
+        axios.post("http://127.0.0.1:3001/sections/search/categories", { keywords: keywordsString })
+            .then(res => {
+                const data = res.data.body
+                getCategories(data)
+            })
     }
 
     const submitSimulation = keyArray => {

@@ -13,13 +13,10 @@ export const DetailsForm = () => {
 
 	const savingColor = (e, id) => {
 		e.preventDefault()
-		
-		let tagArray = tags.split(",")
-		tagArray = tagArray.map(tag => tag.trim())
 
 		const myColor = {
 			name,
-			tags: tagArray,
+			tags,
 			description
 		}
 
@@ -43,9 +40,9 @@ export const DetailsForm = () => {
 	}
 
 	const verifier = () => {
-		const childrenCheck = newColor.samples.length !== 0
+		const { samples } = newColor
 
-		if (file && (file.type === "text/css") && tags && name && childrenCheck) {
+		if (file && (file.type === "text/css") && tags && name && samples) {
 			return (
 				<div className="row">
 					<button className="btn primary_button" onClick={e => {

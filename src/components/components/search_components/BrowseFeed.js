@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import axios from 'axios'
 
 import { GlobalContext } from '../context/GlobalState'
 
@@ -15,8 +16,12 @@ export const BrowseFeed = ({ compoEle }) => {
         e.preventDefault()
 
         const keywordsString = {type, tag, children}
-        submitSimulation(keywordsString)
-            .then(data => getComponents(data))
+        
+        axios.post("http://127.0.0.1:3001/components/search", keywordsString)
+            .then(res => {
+                const data = res.data.body
+                getComponents(data)
+            })
     }
 
     const submitSimulation = keyArray => {

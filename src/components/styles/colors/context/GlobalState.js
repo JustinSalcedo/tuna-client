@@ -6,8 +6,8 @@ const initialState = {
     /* Initial State */
     newColor: {
         name: '',
-        tags: [],
-        samples: [],
+        tags: '',
+        samples: '',
         description: ''
     },
     file: null,

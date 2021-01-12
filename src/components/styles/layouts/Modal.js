@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import { GlobalContext } from './context/GlobalState'
 
@@ -9,39 +10,28 @@ export const Modal = () => {
 	const [layoutItem, setLayoutItem] = useState(null)
 	const [errorLog, setErrorLog] = useState(null)
 	const [loaded, setLoaded] = useState(false)
-	const [childrenCheck, setChildrenCheck] = useState(false)
 	const [verified, setVerified] = useState(null)
 
 	const layoutFunction = async () => {
 		const { tags, name, description } = newLayout
-		// const formData = new FormData({
-		// 	file,
-		// 	tags,
-		// 	name,
-		// 	description
-		// })
-		// const formData = new FormData()
-		// const layoutFile = { ...newLayout, file }
-		// formData.append(
-		// 	name,
-		// 	tags,
-		// 	description,
-		// 	file
-		// )
 
 		if(!verified) {
-			setVerified({ name, tags, description, file })
-			setChildrenCheck(tags.length !== 0)
+			const formData = new FormData()
+			formData.append("name", name)
+			formData.append("tags", tags)
+			formData.append("description", description)
+			formData.append("file", file)
+			setVerified(formData)
 		}
 
 		try {
-			if(file && childrenCheck && name) {
-				await submitSimulation(verified)
+			if(file && tags && name) {
+				await axios.post("http://127.0.0.1:3001/layouts/add", verified)
 					.then(res => {
-						setLayoutItem(res)
+						setLayoutItem(res.data.body)
 						setLoaded(true)
 						if(renderOn) {
-							window.open("localhost:3000/layouts/render/" + res._id, "_blank")
+							window.open("http://127.0.0.1:3001/layouts/render" + res.data.body._id, "_blank")
 							setRender(false)
 						}
 					})
@@ -60,7 +50,7 @@ export const Modal = () => {
 		})
 	}
 
-	if(modalOn) { layoutFunction() }
+	if(modalOn && !loaded) { layoutFunction() }
 
 	const resetModal = () => {
 		setModal(false)

@@ -13,13 +13,10 @@ export const DetailsForm = () => {
 
 	const savingFont = (e, id) => {
 		e.preventDefault()
-		
-		let tagArray = tags.split(",")
-		tagArray = tagArray.map(tag => tag.trim())
 
 		const myFont = {
 			name,
-			tags: tagArray,
+			tags,
 			description
 		}
 
@@ -43,9 +40,9 @@ export const DetailsForm = () => {
 	}
 
 	const verifier = () => {
-		const childrenCheck = newFont.faces.length !== 0
+		const { faces } = newFont
 
-		if (file && (file.type === "text/css") && tags && name && childrenCheck) {
+		if (file && (file.type === "text/css") && tags && name && faces) {
 			return (
 				<div className="row">
 					<button className="btn primary_button" onClick={e => {

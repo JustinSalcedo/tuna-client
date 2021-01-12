@@ -15,7 +15,7 @@ export const BrowseTable = ({ category, filteredSections }) => {
 	
 			const newSectionList = sectionList.map(item => {
 				if (item.id === category.id) {
-					return {...item, docId: randomSection.id}
+					return {...item, docId: randomSection._id}
 				} else return {...item}
 			})
 	
@@ -58,7 +58,7 @@ export const BrowseTable = ({ category, filteredSections }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{filteredSections.map(section => (<TableElement key={section.id} section={section} 
+					{filteredSections.map(section => (<TableElement key={section._id} section={section} 
 					category={category} />))}
 				</tbody>
 			</table>

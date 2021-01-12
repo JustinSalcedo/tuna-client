@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import { GlobalContext } from './context/GlobalState'
 
@@ -15,12 +16,12 @@ export const Modal = () => {
 		const { category, model, structure } = newModel
 		try {
 			if(children && category && model && structure) {
-				await submitSimulation(newModel)
+				await axios.post("http://127.0.0.1:3001/models/add", newModel)
 					.then(res => {
-						setModelItem(res)
+						setModelItem(res.data.body)
 						setLoaded(true)
 						if(renderOn) {
-							window.open("localhost:3000/sections/render/" + res._id, "_blank")
+							window.open("http://127.0.0.1:3001/models/render/" + res.data.body._id, "_blank")
 							setRender(false)
 						}
 					})
@@ -39,7 +40,7 @@ export const Modal = () => {
 		})
 	}
 
-	if(modalOn) { modelFunction() }
+	if(modalOn && !loaded) { modelFunction() }
 	
 	const displayModal = () => {
 		return {
@@ -114,7 +115,7 @@ export const Modal = () => {
 							</Link>
 							<button className="btn primary_button" onClick={() => setModal(false)}>Continue editing</button>
 							{modelItem ? (
-								<Link to="search_components" onClick={() => {
+								<Link to="search_categories" onClick={() => {
 									setModal(false)
 									resetState()
 								}}>

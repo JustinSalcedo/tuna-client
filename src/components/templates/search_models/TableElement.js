@@ -7,7 +7,7 @@ export const TableElement = ({ model }) => {
 	
 	const selectModel = () => {
 		const newModel = {
-			id: model.id,
+			id: model._id,
 			category: model.category,
 			structure: model.structure
 		}
@@ -19,7 +19,7 @@ export const TableElement = ({ model }) => {
         <tr>
 			<td>
 				<input className="input_radio" type="radio" name="modelId"
-				onChange={selectModel} checked={model.id === modelId} />
+				onChange={selectModel} checked={model._id === modelId} />
 			</td>
 			<td>{model.model}</td>
 			<td>{model.category}</td>

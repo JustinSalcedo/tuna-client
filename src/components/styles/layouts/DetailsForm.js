@@ -13,13 +13,10 @@ export const DetailsForm = () => {
 
 	const savingLayout = (e, id) => {
 		e.preventDefault()
-		
-		let tagArray = tags.split(",")
-		tagArray = tagArray.map(tag => tag.trim())
 
 		const myLayout = {
 			name,
-			tags: tagArray,
+			tags,
 			description
 		}
 

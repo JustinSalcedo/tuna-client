@@ -5,11 +5,11 @@ import AppReducer from './AppReducer'
 const initialState = {
     /* Initial State */
     models: [
-        { "id": 1, "model": "EssentialLocal", "children": ["header", "article", "footer"], "category": "Landing", "structure": "EPC"},
-        { "id": 2, "model": "Informational", "children": ["article", "footer", "productDive"], "category": "About", "structure": "EPC"},
-        { "id": 3, "model": "Presentation", "children": ["socialProof", "footer", "productDive"], "category": "About", "structure": "Slideshow"},
-        { "id": 4, "model": "NewProduct", "children": ["footer", "productDive"], "category": "Home", "structure": "Cover"},
-        { "id": 5, "model": "Catalogue", "children": ["socialProof", "header", "article"], "category": "Products", "structure": "Gallery"}
+        // { "id": 1, "model": "EssentialLocal", "children": ["header", "article", "footer"], "category": "Landing", "structure": "EPC"},
+        // { "id": 2, "model": "Informational", "children": ["article", "footer", "productDive"], "category": "About", "structure": "EPC"},
+        // { "id": 3, "model": "Presentation", "children": ["socialProof", "footer", "productDive"], "category": "About", "structure": "Slideshow"},
+        // { "id": 4, "model": "NewProduct", "children": ["footer", "productDive"], "category": "Home", "structure": "Cover"},
+        // { "id": 5, "model": "Catalogue", "children": ["socialProof", "header", "article"], "category": "Products", "structure": "Gallery"}
     ],
     sections: [],
     newTemplate: {

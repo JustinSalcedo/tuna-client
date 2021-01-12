@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 import { BrowseTable } from './BrowseTable'
 
-export const BrowseFeed = ({ styles, getStyles, stylesList, addStyle }) => {
+export const BrowseFeed = ({ styles, getStyles, addStyle, urlPost }) => {
 
     const [name, setName] = useState('')
     const [tags, setTags] = useState('')
@@ -10,7 +11,19 @@ export const BrowseFeed = ({ styles, getStyles, stylesList, addStyle }) => {
     const onSubmit = e => {
         e.preventDefault()
 
-        getStyles(stylesList)
+        let dataPost = {}
+        dataPost["tags"] = tags ? tags.split(",").map(tag => tag.trim()) : []
+        if(name) { dataPost["name"] = name }
+
+        axios.post(urlPost, dataPost)
+            .then(res => {
+                const data = res.data.body
+                getStyles(data)
+            })
+            .catch(err => {
+                console.log(err)
+                console.log(dataPost)
+            })
     }
 
     return (

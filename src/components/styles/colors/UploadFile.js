@@ -29,11 +29,7 @@ export const UploadFile = () => {
     }
 
     const addSamples = e => {
-        const newSamples = e.target.value
-            .split(",")
-            .map(sample => sample.trim())
-
-        setSamples(newSamples)
+        setSamples(e.target.value)
     }
 
     return (
@@ -51,7 +47,7 @@ export const UploadFile = () => {
                     <div className="input_group">
                       <label htmlFor="colors">Samples (HEX)</label>
                       <input className="input_text" type="text" name="colors" 
-                      value={newColor.samples.join(", ")} onChange={addSamples} />
+                      value={newColor.samples} onChange={addSamples} />
                     </div>
                 </form>
                 {fileVerifier()}

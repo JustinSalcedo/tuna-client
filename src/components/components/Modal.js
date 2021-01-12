@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import { GlobalContext } from './context/GlobalState'
 
@@ -48,12 +49,12 @@ export const Modal = () => {
 
 		try {
 			if(childrenCheck && type && tag) {
-				await submitSimulation(verified)
+				await axios.post("http://127.0.0.1:3001/components/add", verified)
 					.then(res => {
-						setComponentItem(res)
+						setComponentItem(res.data.body)
 						setLoaded(true)
 						if(renderOn) {
-							window.open("localhost:3000/sections/render/" + res._id, "_blank")
+							window.open("http://127.0.0.1:3001/components/render/" + res.data.body._id, "_blank")
 							setRender(false)
 						}
 					})
@@ -72,7 +73,7 @@ export const Modal = () => {
 		})
 	}
 
-	if(modalOn) { componentFunction() }
+	if(modalOn && !loaded) { componentFunction() }
 
 	const resetModal = () => {
 		setModal(false)
@@ -179,7 +180,7 @@ export const Modal = () => {
 				{loaded ? (
 					<div className="submit_buttons">
 						<div className="row">
-							<Link to="/sections" onClick={() => {
+							<Link to="/components" onClick={() => {
 								setModal(false)
 								resetState()
 							}}>

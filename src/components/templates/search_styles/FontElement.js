@@ -9,13 +9,13 @@ export const FontElement = () => {
 
     const [dropdown, setDropdown] = useState(false)
 
-    // Dummy list
-    const [stylesList, setStylesList] = useState([
-        { id: 2, file: "Lorem ipsum dolor sit amet,", name: "Writer", tags: ["typewrite", "serif", "light"], faces: ["montserrat", "courier"] },
-        { id: 3, file: "Maecenas rutrum augue mauri", name: "Newspaper", tags: ["modern", "serif", "robust"], faces: ["skolar latin", "proxima nova"] },
-        { id: 4, file: "Vestibulum a sapien odio.", name: "TextBlock", tags: ["sans", "small", "caps", "robust"], faces: ["alegreya sans", "source sans"] },
-        { id: 5, file: "Quisque eleifend vestibulum", name: "Tropical", tags: ["brush", "sans", "display", "light", "hand"], faces: ["pacifico", "quicksand"] }
-    ])
+    /* Dummy list */
+    // const [stylesList, setStylesList] = useState([
+    //     { id: 2, file: "Lorem ipsum dolor sit amet,", name: "Writer", tags: ["typewrite", "serif", "light"], faces: ["montserrat", "courier"] },
+    //     { id: 3, file: "Maecenas rutrum augue mauri", name: "Newspaper", tags: ["modern", "serif", "robust"], faces: ["skolar latin", "proxima nova"] },
+    //     { id: 4, file: "Vestibulum a sapien odio.", name: "TextBlock", tags: ["sans", "small", "caps", "robust"], faces: ["alegreya sans", "source sans"] },
+    //     { id: 5, file: "Quisque eleifend vestibulum", name: "Tropical", tags: ["brush", "sans", "display", "light", "hand"], faces: ["pacifico", "quicksand"] }
+    // ])
 
     const unselect = () => {
 		const newFont = {
@@ -31,8 +31,8 @@ export const FontElement = () => {
         if (dropdown) {
             return (
                 <>
-                    <BrowseFeed styles={fonts} getStyles={getFonts} stylesList={stylesList} 
-                    tagging={["Faces", "faces"]} addStyle={addFont} />
+                    <BrowseFeed styles={fonts} getStyles={getFonts} urlPost="http://127.0.0.1:3001/fonts/search"
+                    tagging={["Faces", "faces", "font"]} addStyle={addFont} />
                 </>
             )
         }

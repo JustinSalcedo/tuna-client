@@ -13,7 +13,7 @@ export const TableElement = ({ section, category }) => {
 	const selectSection = () => {
 		const newSectionList = sectionList.map(item => {
 			if (item.id === category.id) {
-				return {...item, docId: section.id}
+				return {...item, docId: section._id}
 			} else return {...item}
 		})
 
@@ -39,7 +39,7 @@ export const TableElement = ({ section, category }) => {
         <tr>
 			<td>
 				<input className="input_radio" type="radio" name="docId"
-				onChange={selectSection} checked={section.id === category.docId} />
+				onChange={selectSection} checked={section._id === category.docId} />
 			</td>
 			<td>{section.tag}</td>
 			<td>{section.layout}</td>

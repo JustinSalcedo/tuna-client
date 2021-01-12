@@ -5,15 +5,15 @@ import AppReducer from './AppReducer'
 const initialState = {
     /* Initial State */
     components: [
-        { "_id": 1, "type": "navbar", "tag": "nav", "children": ["2", "3", "4"], "description": "My towel is blue"},
-        { "_id": 2, "type": "current_hours", "tag": "div", "nodes": ["p", "span"], "description": "Useful with Vanilla Javascript"},
-        { "_id": 3, "type": "secondary_button", "tag": "button", "placeholder": "secondary_button", "description": "I would like to buy cookies"},
-        { "_id": 4, "type": "primary_buttons", "tag": "button", "placeholder": "primary_button", "description": "But I can't it so much flour"},
-        { "_id": 5, "type": "header_content", "tag": "div", "children": ["6", "7", "8"], "description": "That's one of my fitness secrets"},
-        { "_id": 6, "type": "header_text", "tag": "div", "nodes": ["h1", "h2", "p"], "description": "We stack threee types of text"},
-        { "_id": 7, "type": "header_image", "tag": "div", "nodes": ["img"], "description": "I know, you want to go out..."},
-        { "_id": 8, "type": "operational_hours", "tag": "div", "nodes": ["h2", "p", "span"], "description": "Mamaaaaaaa"},
-        { "_id": 9, "type": "useful_links", "tag": "ul", "nodes": ["li", "li", "li", "li"], "description": "This has to work"}
+        // { "_id": 1, "type": "navbar", "tag": "nav", "children": ["2", "3", "4"], "description": "My towel is blue"},
+        // { "_id": 2, "type": "current_hours", "tag": "div", "nodes": ["p", "span"], "description": "Useful with Vanilla Javascript"},
+        // { "_id": 3, "type": "secondary_button", "tag": "button", "placeholder": "secondary_button", "description": "I would like to buy cookies"},
+        // { "_id": 4, "type": "primary_buttons", "tag": "button", "placeholder": "primary_button", "description": "But I can't it so much flour"},
+        // { "_id": 5, "type": "header_content", "tag": "div", "children": ["6", "7", "8"], "description": "That's one of my fitness secrets"},
+        // { "_id": 6, "type": "header_text", "tag": "div", "nodes": ["h1", "h2", "p"], "description": "We stack threee types of text"},
+        // { "_id": 7, "type": "header_image", "tag": "div", "nodes": ["img"], "description": "I know, you want to go out..."},
+        // { "_id": 8, "type": "operational_hours", "tag": "div", "nodes": ["h2", "p", "span"], "description": "Mamaaaaaaa"},
+        // { "_id": 9, "type": "useful_links", "tag": "ul", "nodes": ["li", "li", "li", "li"], "description": "This has to work"}
     ],
     newSection: {
         category: '',
